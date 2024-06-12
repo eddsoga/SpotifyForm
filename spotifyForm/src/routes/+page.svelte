@@ -1,5 +1,6 @@
 <script>
     let location = "cafeteria";
+    let mood = "feliz";
     let seed_genres = 'pop';
     let danceability = 5;
     let energy = 5;
@@ -12,7 +13,8 @@
   
     async function handleSubmit() {
       const formData = {
-        location,
+      location:location,
+      mood:mood,
       danceability: danceability / 10,
       energy: energy / 10,
       loudness: loudness / 10,
@@ -20,10 +22,10 @@
       acousticness: acousticness / 10,
       instrumentalness: instrumentalness / 10,
       liveness: liveness / 10,
-      tempo
+      tempo:tempo
     };
       console.log(formData);
-      const response = await fetch('https://tu-backend-api.com/recommendations', {
+      const response = await fetch('http://localhost:8000/etl/playlist_info/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -63,7 +65,7 @@
           <option value="pop">Pop</option>
           <option value="rock">Rock</option>
           <option value="alternative">Alternativa</option>
-          <option value="">Hotel</option>
+          <option value="dance">Dance</option>
         </select>
       </div>
       
